@@ -70,7 +70,7 @@ The format of the `actor` object is as follows:
   "name": "string",
   "birthdate": "string", // a string in the format "Month DD, YYYY"
   "height": "number", // a value in centimeters
-  "nationality": "American", // a string
+  "nationality": "string", // a string
   "notable_works": ["string"] // an array of strings, each string is the title of a movie
 }
 ```

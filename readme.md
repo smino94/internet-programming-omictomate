@@ -14,9 +14,9 @@
 
 ## 1. Fork the repository
 
-1. Go to the exam repository page: [https://github.com/sweko/internet-programming-ntrlawkwna](https://github.com/sweko/internet-programming-ntrlawkwna)
+1. Go to the exam repository page: [https://github.com/sweko/internet-programming-omictomate](https://github.com/sweko/internet-programming-omictomate)
 2. Click on the "Fork" button in the top right corner of the page. This will create a copy of the repository in your GitHub account.
-3. Go to your GitHub account and open the forked repository. The URL should be something like `https://github.com/<your-user-name-here>/internet-programming-ntrlawkwna`
+3. Go to your GitHub account and open the forked repository. The URL should be something like `https://github.com/<your-user-name-here>/internet-programming-omictomate`
 
 
 ### 1.1 Sync your fork with the original repository
@@ -31,7 +31,7 @@ If you already forked the repository
 1. Go to your forked repository page
 2. Click on the "Code" button in the top right corner of the page
 3. Copy the URL of the repository
-4. Open a terminal and run the following command: `git clone <url-of-the-repository>`. This will create a local copy of the repository on your computer. The URL should be something like `https://github.com/<your-user-name-here>/internet-programming-ntrlawkwna.git`
+4. Open a terminal and run the following command: `git clone <url-of-the-repository>`. This will create a local copy of the repository on your computer. The URL should be something like `https://github.com/<your-user-name-here>/internet-programming-omictomate.git`
 
 ## 3. Make sure that you have the correct folder structure
 

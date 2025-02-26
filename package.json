@@ -7,8 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "check": "tsx code/utils/check-data.ts",
-    "generate": "tsx code/utils/create-folders"
+    "check": "tsx ./utils/check-data.ts",
+    "generate": "tsx ./utils/create-folders ./utils/students.txt ./code/template ./code ./utils/skip.txt"
   },
   "repository": {
     "type": "git",

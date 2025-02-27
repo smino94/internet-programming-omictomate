@@ -1,0 +1,80 @@
+<div class="statistics">
+  <h1>Movie Statistics</h1>
+  
+  <div class="stats-grid">
+    <div class="stats-card">
+      <h2>General Statistics</h2>
+      <div class="stat-item">
+        <span class="stat-label">Total Movies:</span>
+        <span class="stat-value">{{ totalMovies }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Total Actors:</span>
+        <span class="stat-value">{{ totalActors }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Total Genres:</span>
+        <span class="stat-value">{{ totalGenres }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Total Oscars:</span>
+        <span class="stat-value">{{ totalOscars }}</span>
+      </div>
+    </div>
+    
+    <div class="stats-card">
+      <h2>Oscar Statistics</h2>
+      <div *ngIf="oscarStats.length > 0; else noOscars">
+        <div class="stat-item" *ngFor="let stat of oscarStats">
+          <span class="stat-label">{{ formatOscarType(stat.type) }}:</span>
+          <span class="stat-value">{{ stat.count }}</span>
+        </div>
+      </div>
+      <ng-template #noOscars>
+        <div class="no-data">No oscar data available</div>
+      </ng-template>
+    </div>
+    
+    <div class="stats-card">
+      <h2>Movies per Decade</h2>
+      <div *ngIf="decadeStats.length > 0; else noDecades">
+        <div class="stat-item" *ngFor="let stat of decadeStats">
+          <span class="stat-label">{{ stat.decade }}:</span>
+          <span class="stat-value">{{ stat.count }}</span>
+        </div>
+      </div>
+      <ng-template #noDecades>
+        <div class="no-data">No decade data available</div>
+      </ng-template>
+    </div>
+    
+    <div class="stats-card">
+      <h2>Movies per Genre</h2>
+      <div *ngIf="genreStats.length > 0; else noGenres">
+        <div class="stat-item" *ngFor="let stat of genreStats">
+          <span class="stat-label">{{ stat.genre }}:</span>
+          <span class="stat-value">{{ stat.count }}</span>
+        </div>
+      </div>
+      <ng-template #noGenres>
+        <div class="no-data">No genre data available</div>
+      </ng-template>
+    </div>
+    
+    <div class="stats-card">
+      <h2>Missing Data</h2>
+      <div class="stat-item">
+        <span class="stat-label">Actors without details:</span>
+        <span class="stat-value">{{ actorsWithoutDetails }}</span>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="loading" class="loading">
+    Loading statistics...
+  </div>
+  
+  <div *ngIf="error" class="error">
+    Error loading statistics: {{ error }}
+  </div>
+</div>

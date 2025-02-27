@@ -1,0 +1,65 @@
+<div class="movie-details" *ngIf="movie">
+  <h1>{{ movie.title }}</h1>
+  
+  <div class="details-container">
+    <div class="detail-row">
+      <span class="label">ID:</span>
+      <span>{{ movie.id }}</span>
+    </div>
+    
+    <div class="detail-row">
+      <span class="label">Year:</span>
+      <span>{{ movie.year }}</span>
+    </div>
+    
+    <div class="detail-row">
+      <span class="label">Director:</span>
+      <span>{{ movie.director }}</span>
+    </div>
+    
+    <div class="detail-row">
+      <span class="label">Genre:</span>
+      <span>
+        <ul class="genre-list">
+          <li *ngFor="let genre of movie.genre">{{ genre }}</li>
+        </ul>
+      </span>
+    </div>
+    
+    <div class="detail-row">
+      <span class="label">Rating:</span>
+      <span>{{ movie.rating || 'N/A' }}</span>
+    </div>
+    
+    <div class="detail-row">
+      <span class="label">Plot:</span>
+      <span>{{ movie.plot || 'No plot available.' }}</span>
+    </div>
+    
+    <div class="detail-row">
+      <span class="label">Cast:</span>
+      <span>
+        <ul class="cast-list" *ngIf="movie.cast && movie.cast.length > 0">
+          <li *ngFor="let castMember of sortedCast">
+            {{ castMember.actor }} as {{ castMember.character }}
+          </li>
+        </ul>
+        <span *ngIf="!movie.cast || movie.cast.length === 0">No cast information available.</span>
+      </span>
+    </div>
+  </div>
+  
+  <div class="actions">
+    <button class="btn btn-warning" [routerLink]="['/movies', movie.id, 'edit']">Edit</button>
+    <button class="btn btn-danger" (click)="confirmDelete()">Delete</button>
+    <button class="btn btn-secondary" routerLink="/movies">Back to List</button>
+  </div>
+</div>
+
+<div *ngIf="!movie && !error" class="loading">
+  Loading movie details...
+</div>
+
+<div *ngIf="error" class="error">
+  Error loading movie details: {{ error }}
+</div>

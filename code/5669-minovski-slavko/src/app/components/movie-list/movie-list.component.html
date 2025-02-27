@@ -1,0 +1,37 @@
+<div class="movie-list-container">
+  <div class="header">
+    <h1>Movies</h1>
+    <button class="btn btn-primary" routerLink="/movies/create">Add Movie</button>
+  </div>
+  
+  <table class="movie-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Director</th>
+        <th>Genre</th>
+        <th>Oscars</th>
+        <th>Rating</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movie of movies">
+        <td>{{ movie.id }}</td>
+        <td>{{ movie.title }}</td>
+        <td>{{ movie.year }}</td>
+        <td>{{ movie.director }}</td>
+        <td>{{ formatGenres(movie.genre) }}</td>
+        <td>{{ countOscars(movie.oscars) }}</td>
+        <td>{{ movie.rating || 'N/A' }}</td>
+        <td class="actions">
+          <button class="btn btn-info" [routerLink]="['/movies', movie.id]">View</button>
+          <button class="btn btn-warning" [routerLink]="['/movies', movie.id, 'edit']">Edit</button>
+          <button class="btn btn-danger" (click)="confirmDelete(movie)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,59 @@
+<div class="movie-create">
+    <h1>Create New Movie</h1>
+    
+    <form (ngSubmit)="saveMovie()">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" [(ngModel)]="movie.title" required>
+        <div class="error" *ngIf="errors['title']">{{ errors['title'] }}</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="year">Year:</label>
+        <input type="number" id="year" name="year" [(ngModel)]="movie.year" required>
+        <div class="error" *ngIf="errors['year']">{{ errors['year'] }}</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="plot">Plot:</label>
+        <textarea id="plot" name="plot" [(ngModel)]="movie.plot" rows="4"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="director">Director:</label>
+        <input type="text" id="director" name="director" [(ngModel)]="movie.director" required>
+        <div class="error" *ngIf="errors['director']">{{ errors['director'] }}</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="genre">Genre:</label>
+        <select id="genre" name="genre" [(ngModel)]="selectedGenre">
+          <option value="">Select Genre</option>
+          <option *ngFor="let genre of genres" [value]="genre.id">{{ genre.name }}</option>
+        </select>
+        <button type="button" class="btn btn-sm" (click)="addGenre()">Add Genre</button>
+        
+        <div class="selected-genres">
+          <div *ngFor="let genre of movie.genre; let i = index" class="genre-tag">
+            {{ genre }}
+            <button type="button" class="remove-genre" (click)="removeGenre(i)">×</button>
+          </div>
+        </div>
+        <div class="error" *ngIf="errors['genre']">{{ errors['genre'] }}</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="rating">Rating:</label>
+        <input type="number" id="rating" name="rating" [(ngModel)]="movie.rating" min="0" max="10" step="0.1">
+      </div>
+      
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+    
+    <div *ngIf="error" class="error-message">
+      {{ error }}
+    </div>
+  </div>
